@@ -3,6 +3,9 @@ import { useState } from "react";
 import "./App.css";
 import PropsExample from "./components/PropsExample/PropsExample";
 import Profile from "./components/profile";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Main from "./components/Main";
 
 // En react tous les composants sont des fonctions*
 // Tout composant doit retourner un élément JSX
@@ -27,11 +30,14 @@ function App() {
 
   return (
     <>
+      <Header />
       <h1>Vite + React</h1>
 
-      <Profile />
+      <Main name = {name} childClickHandler={onClickHandler} />
 
-      <PropsExample name={name} childClickHandler={onClickHandler} />
+      {/* <PropsExample name={name} childClickHandler={onClickHandler} /> */}
+      
+      <Footer />
     </>
   );
 }

@@ -6,38 +6,7 @@ import { useLayoutEffect, useState } from "react";
 // similaire a celle des attributs HTML
 
 export default function PropsExample({ name, childClickHandler }) {
-  const data = [
-    {
-      phone: "(319) 586-1183",
-      email: "dui.in.sodales@hotmail.ca",
-      address: "265-6020 Enim. Av.",
-      name: "Xandra Bell",
-    },
-    {
-      phone: "(713) 126-6364",
-      email: "et@icloud.com",
-      address: "8771 Nulla. Av.",
-      name: "Rashad Lamb",
-    },
-    {
-      phone: "(370) 465-5000",
-      email: "ut.pellentesque.eget@icloud.couk",
-      address: "956-3473 Aliquam St.",
-      name: "Bell Heath",
-    },
-    {
-      phone: "1-436-244-8813",
-      email: "at.risus@google.ca",
-      address: "P.O. Box 875, 3798 Ultrices Rd.",
-      name: "Leilani Erickson",
-    },
-    {
-      phone: "1-329-668-9391",
-      email: "pellentesque.eget@hotmail.net",
-      address: "876-1848 Laoreet Street",
-      name: "Herman Patrick",
-    },
-  ];
+
   const [visible, setVisible] = useState(true);
   return (
     <>
@@ -54,25 +23,23 @@ export default function PropsExample({ name, childClickHandler }) {
       <br />
       <br />
       <br />
-      <br />
-      <br />
-      <br />
-      {visible && (
+      {!visible && (
         <ul>
-          {/* {[1, 2, 3, 4].map((item, i) => (
-            <div key={item}>{item}</div>
-          ))} */}
-          {data.map((item) => (
-            <>
-              <li key={item.phone}>
-                <div>{item.name}</div>
-                <div>{item.phone}</div>
-                <div>{item.email}</div>
-                <div>{item.address}</div>
-              </li>
-              <br />
-            </>
-          ))}
+            <label>
+                Nom :
+                <input type="text" name="name" />
+            </label>
+            <input type="submit" value="Envoyer" />
+            <br />
+            <label>
+                Proffession : 
+
+            </label>
+            <select>
+                <option value="Developpeur">Developpeur</option>
+                <option value="Administrateur">Administrateur</option>
+                <option selected value="Chomage">Chomage</option>
+            </select>   
         </ul>
       )}
     </>
