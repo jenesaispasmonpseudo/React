@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-no-target-blank */
-import { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import "./App.css";
-import PropsExample from "./components/PropsExample/PropsExample";
-import Profile from "./components/profile";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Main from "./components/Main";
+import Main from './components/Main';
+import Home from './components/Home';
+
 
 // En react tous les composants sont des fonctions*
 // Tout composant doit retourner un élément JSX
@@ -28,16 +28,43 @@ function App() {
     });
   }
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const storedUserLoggedInInformation = localStorage.getItem('isLoggedIn');
+
+    if (storedUserLoggedInInformation === '1') {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const loginHandler = (email, password) => {
+    // We should of course check email and password
+    // But it's just a dummy/ demo anyways
+    localStorage.setItem('isLoggedIn', '1');
+    setIsLoggedIn(true);
+  };
+
+  const logoutHandler = () => {
+    localStorage.removeItem('isLoggedIn');
+    setIsLoggedIn(false);
+  };
+
   return (
     <>
-      <Header />
-      <h1>Vite + React</h1>
 
-      <Main name = {name} childClickHandler={onClickHandler} />
+      <Header isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
+      <main>
+        {!isLoggedIn && <Main onLogin={loginHandler} />}
+        {isLoggedIn && <Home onLogout={logoutHandler} />}
+      </main>
+
+
+      <Footer  />
+
 
       {/* <PropsExample name={name} childClickHandler={onClickHandler} /> */}
       
-      <Footer />
     </>
   );
 }

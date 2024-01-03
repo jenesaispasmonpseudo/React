@@ -65,4 +65,22 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-family: sans-serif;
+    background: #fff;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  main {
+    margin-top: 6rem;
+  }
+  
 }
